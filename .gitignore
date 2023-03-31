@@ -4,8 +4,6 @@
 
 postgres/
 
-.env
-
 
 # Logs
 logs
