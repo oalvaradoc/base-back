@@ -1,0 +1,4 @@
+CREATE DATABASE TesloDB;
+GO
+
+USE TesloDB;

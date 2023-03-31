@@ -1,0 +1,1 @@
+/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Oma.2017 -d master -i Create-database.sql
