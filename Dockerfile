@@ -1,12 +1,12 @@
-# FROM mcr.microsoft.com/mssql/server
-# USER root
-# COPY ./Create-database.sql .
-# COPY ./start.sh .
-# COPY ./entrypoint.sh .
-# ENV ACCEPT_EULA=Y
-# ENV SA_PASSWORD=Oma.2017
-# RUN chmod +x ./start.sh .
-# CMD /bin/bash ./entrypoint.sh
+FROM mcr.microsoft.com/mssql/server
+USER root
+COPY ./Create-database.sql .
+COPY ./start.sh .
+COPY ./entrypoint.sh .
+ENV ACCEPT_EULA=Y
+ENV SA_PASSWORD=Oma.2017
+RUN chmod +x ./start.sh .
+CMD /bin/bash ./entrypoint.sh
 
 # # Base image
 FROM node:18.15.0
