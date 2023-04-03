@@ -1,0 +1,37 @@
+version: "3.1"
+
+services:
+  # sqlserver:
+  #   image: mcr.microsoft.com/mssql/server
+  #   user: '0:0'
+  #   container_name: sql-server-db
+  #   ports:
+  #     - 1433:1433
+  #   environment:
+  #     ACCEPT_EULA: Y
+  #     SA_PASSWORD: Oma.2017
+  #     MSSQL_PID: Express
+  #   volumes:
+  #     - ~/docker/sqlserver-data:/var/opt/mssql/data
+
+  backapp:
+    # depends_on:
+    #   - db
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: base-back-prod
+    container_name: BackApp-Prod
+    restart: always # reiniciar el contenedor si se detiene
+    ports:
+      - "${PORT}:${PORT}"
+
+    environment:
+      STATE: ${STATE}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USERNAME: ${DB_USERNAME}
+      JWT_SECRET: ${JWT_SECRET}
+      PORT: ${PORT}
