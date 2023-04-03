@@ -19,7 +19,7 @@ services:
     #   - db
     build: 
       context: .
-      dockerfile: Dockerfil
+      dockerfile: Dockerfile
     image: base-back-prod
     container_name: BackApp-Prod
     restart: always # reiniciar el contenedor si se detiene
