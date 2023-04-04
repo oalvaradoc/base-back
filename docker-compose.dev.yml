@@ -2,7 +2,7 @@ version: "3.1"
 
 services:
   sqlserver:
-    image: mcr.microsoft.com/mssql/server
+    image: Sql-server
     user: '0:0'
     container_name: sql-server-db
     ports:
