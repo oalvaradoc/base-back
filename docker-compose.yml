@@ -11,21 +11,6 @@ services:
       ACCEPT_EULA: Y
       SA_PASSWORD: Oma.2017
       MSSQL_PID: Express
-    volumes:
-      - ~/docker/sqlserver-data:/var/opt/mssql/data
-  backapp:
-    # depends_on:
-    #   - db
-    build: 
-      context: .
-      dockerfile: Dockerfile
-    image: base-back-dev
-    container_name: BackApp-Dev
-    restart: always # reiniciar el contenedor si se detiene
-    ports:
-      - "${PORT}:${PORT}"
-
-    environment:
       STATE: ${STATE}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
@@ -34,3 +19,17 @@ services:
       DB_USERNAME: ${DB_USERNAME}
       JWT_SECRET: ${JWT_SECRET}
       PORT: ${PORT}
+    volumes:
+      - ~/docker/sqlserver-data:/var/opt/mssql/data
+  # backapp:
+  #   # depends_on:
+  #   #   - db
+  #   build: 
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   image: base-back-dev
+  #   container_name: BackApp-Dev
+  #   restart: always # reiniciar el contenedor si se detiene
+  #   ports:
+  #     - "${PORT}:${PORT}"
+      
