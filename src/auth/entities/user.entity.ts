@@ -27,7 +27,7 @@ export class User {
     isActive: boolean;
 
     @Column('text', {
-        default: ['user']
+        default: 'user'
     })
     roles: string|string[];
 

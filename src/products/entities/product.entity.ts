@@ -71,7 +71,7 @@ export class Product {
     })
     @Column('text',{
     })
-    sizes: string[];
+    sizes: string;
 
     @ApiProperty({
         example: 'women',
@@ -84,16 +84,16 @@ export class Product {
     @Column('text', {
         //default: []
     })
-    tags: string[];
+    tags: string | string[];
 
     // images
-    @ApiProperty()
+    @ApiProperty({ type: () => ProductImage })
     @OneToMany(
         () => ProductImage,
         (productImage) => productImage.product,
         { cascade: true, eager: true }
     )
-    images?: ProductImage[];
+    images?: ProductImage;
 
 
     @ManyToOne(

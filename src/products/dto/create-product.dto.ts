@@ -38,25 +38,20 @@ export class CreateProductDto {
     stock?: number; 
 
     @ApiProperty()
-    @IsString({ each: true })
-    @IsArray()
-    sizes: string[]
+    @IsOptional()
+    sizes: string;
 
     @ApiProperty()
     @IsIn(['men','women','kid','unisex'])
     gender: string;
 
     @ApiProperty()
-    @IsString({ each: true })
-    @IsArray()
     @IsOptional()
-    tags: string[];
+    tags: string;
 
     @ApiProperty()
-    @IsString({ each: true })
-    @IsArray()
     @IsOptional()
-    images?: string[];
+    images?: string;
 
 
 }
