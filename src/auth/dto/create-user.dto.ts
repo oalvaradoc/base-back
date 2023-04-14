@@ -5,7 +5,7 @@ export class CreateUserDto {
 
     @IsString()
     @IsEmail()
-    email: string;
+    correo: string;
 
     @IsString()
     @MinLength(6)
@@ -18,6 +18,6 @@ export class CreateUserDto {
 
     @IsString()
     @MinLength(1)
-    fullName: string;
+    nombre: string;
 
 }

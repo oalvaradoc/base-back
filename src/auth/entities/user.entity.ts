@@ -26,10 +26,20 @@ export class User {
     })
     isActive: boolean;
 
-    @Column('text', {
-        default: 'user'
+    @Column('bit', {
+        default: 0
     })
-    roles: string|string[];
+    google: boolean;
+
+    @Column('nvarchar', {
+        nullable: true
+    })
+    img: string;
+
+    @Column('text', {
+        default: ['user']
+    })
+    rol: string|string[];
 
     @OneToMany(
         () => Product,
