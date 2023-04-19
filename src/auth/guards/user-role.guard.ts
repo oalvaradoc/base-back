@@ -32,7 +32,7 @@ export class UserRoleGuard implements CanActivate {
     //   }
     // }
 
-    if ( validRoles.find(x=> x == user.roles)) {
+    if ( validRoles.find(x=> x == user.rol)) {
       return true;
     }
 

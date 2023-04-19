@@ -17,5 +17,15 @@ export class FilesService {
         return path;
     }
 
+    getStaticUsuarioImage( imageName: string ) {
+
+        const path = join( __dirname, '../../static/usuarios', imageName );
+
+        if ( !existsSync(path) ) 
+            throw new BadRequestException(`No product found with image ${ imageName }`);
+
+        return path;
+    }
+
 
 }

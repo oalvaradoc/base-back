@@ -68,11 +68,12 @@ export class AuthController {
   @RoleProtected( ValidRoles.superUser, ValidRoles.admin )
   @UseGuards( AuthGuard(), UserRoleGuard )
   privateRoute2(
-    @GetUser() user: User
+    @GetUser() user: User,
+    @Headers() headers: IncomingHttpHeaders
   ) {
 
     return {
-      ok: true,
+      token: headers['authorization'].replace("Bearer ",""),
       user
     }
   }

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Param, UploadedFile, UseInterceptors, BadRequestException, Res } from '@nestjs/common';
+import { Controller, Get, Post, Param, UploadedFile, UseInterceptors, BadRequestException, Res, ParseUUIDPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -8,13 +8,16 @@ import { diskStorage } from 'multer';
 import { FilesService } from './files.service';
 
 import { fileFilter, fileNamer } from './helpers';
+import { UsuariosService } from 'src/usuarios/usuarios.service';
 
 @ApiTags('Files - Get and Upload')
 @Controller('files')
 export class FilesController {
+
   constructor(
     private readonly filesService: FilesService,
     private readonly configService: ConfigService,
+    private readonly usuariosService: UsuariosService
   ) {}
 
   @Get('product/:imageName')
@@ -51,6 +54,43 @@ export class FilesController {
     const secureUrl = `${ this.configService.get('HOST_API') }/files/product/${ file.filename }`;
 
     return { secureUrl };
+  }
+
+  @Post('usuario/:id')
+  @UseInterceptors( FileInterceptor('file', {
+    fileFilter: fileFilter,
+    // limits: { fileSize: 1000 }
+    storage: diskStorage({
+      destination: './static/usuarios',
+      filename: fileNamer
+    })
+  }) )
+  async uploadUsuarioImage(
+    @Param('id', ParseUUIDPipe ) id: string, 
+    @UploadedFile() file: Express.Multer.File,
+  ){
+
+    if ( !file ) {
+      throw new BadRequestException('Make sure that the file is an image');
+    }
+
+    //const secureUrl = `${ file.filename }`;
+    var updateuser = await this.usuariosService.updateImage(id, file.filename)
+
+    const secureUrl = `${ this.configService.get('HOST_API') }/files/usuario/${ file.filename }`;
+
+    return { secureUrl };
+  }
+
+  @Get('usuario/:imageName')
+  findUsuarioImage(
+    @Res() res: Response,
+    @Param('imageName') imageName: string
+  ) {
+
+    const path = this.filesService.getStaticUsuarioImage( imageName );
+
+    res.sendFile( path );
   }
 
 }

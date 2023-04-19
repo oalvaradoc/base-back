@@ -34,9 +34,16 @@ export class ProductsService {
     try {
       const { images = [], ...productDetails } = createProductDto;
 
+      // const product = this.productRepository.create({
+      //   ...productDetails,
+      //   images: images.map( image => this.productImageRepository.create({ url: image }) ),
+      //   user,
+      // });
+
       const product = this.productRepository.create({
         ...productDetails,
-        images: images.map( image => this.productImageRepository.create({ url: image }) ),
+        //images: images.map( image => this.productImageRepository.create({ url: image }) ),
+        images: this.productImageRepository.create({ url: createProductDto.images }),
         user,
       });
       
@@ -66,7 +73,8 @@ export class ProductsService {
 
     return products.map( ( product ) => ({
       ...product,
-      images: product.images.map( img => img.url )
+      //images: product.images.map( img => img.url )
+      images: product.images
     }))
   }
 
@@ -98,7 +106,8 @@ export class ProductsService {
     const { images = [], ...rest } = await this.findOne( term );
     return {
       ...rest,
-      images: images.map( image => image.url )
+      //images: images.map( image => image.url )
+      images: images
     }
   }
 
@@ -123,9 +132,11 @@ export class ProductsService {
       if( images ) {
         await queryRunner.manager.delete( ProductImage, { product: { id } });
 
-        product.images = images.map( 
-          image => this.productImageRepository.create({ url: image }) 
-        )
+        // product.images = images.map( 
+        //   image => this.productImageRepository.create({ url: image }) 
+        // )
+        product.images = this.productImageRepository.create({ url: updateProductDto.images });
+        
       }
       
       // await this.productRepository.save( product );
