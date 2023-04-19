@@ -75,4 +75,13 @@ docker push <usuario docker hub>/<nombre repositorio>
 
 https://github.com/electerious/Ackee/blob/master/docs/Get%20started.md#2-configure-ackee-1
 
+## Comando Nest para Generar nuevos path
 
+nest g res categoria --no-spec
+nest g res usuarios --no-spec
+
+## El sitio esta publicado en 
+
+https://base-back.vercel.app
+
+https://vercel.com/oalvaradoc/base-back
