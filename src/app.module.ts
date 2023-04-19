@@ -10,6 +10,7 @@ import { SeedModule } from './seed/seed.module';
 import { FilesModule } from './files/files.module';
 import { AuthModule } from './auth/auth.module';
 import { CategoriaModule } from './categoria/categoria.module';
+import { UsuariosModule } from './usuarios/usuarios.module';
 
 @Module({
   imports: [
@@ -53,6 +54,8 @@ import { CategoriaModule } from './categoria/categoria.module';
     MulterModule,
 
     CategoriaModule,
+
+    UsuariosModule,
 
   ],
   controllers: [],

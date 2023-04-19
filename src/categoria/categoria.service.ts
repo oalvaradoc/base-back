@@ -1,16 +1,15 @@
 import { BadRequestException, Injectable, InternalServerErrorException, Logger, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { CreateCategoriaDto } from './dto/create-categoria.dto';
 import { UpdateCategoriaDto } from './dto/update-categoria.dto';
 import { User } from '../auth/entities/user.entity';
-import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, DataSource } from 'typeorm';
 import { Categoria } from './entities/categoria.entity';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
-import { isUUID } from 'class-validator';
+import { validate as isUUID } from 'uuid';
 
 @Injectable()
 export class CategoriaService {
-  [x: string]: any;
 
   private readonly logger = new Logger('CategoriaService');
 
@@ -90,7 +89,7 @@ export class CategoriaService {
 
     const { ...toUpdate } = updateCategoriaDto;
 
-    const categoria = await this.productRepository.preload({ id, ...toUpdate });
+    const categoria = await this.categoriaRepository.preload({ id, ...toUpdate });
 
     if ( !categoria ) throw new NotFoundException(`Category with id: ${ id } not found`);
 
@@ -107,7 +106,7 @@ export class CategoriaService {
       await queryRunner.commitTransaction();
       await queryRunner.release();
 
-      return this.findOnePlain( id );
+      return categoria;
       
     } catch (error) {
 
@@ -134,4 +133,6 @@ export class CategoriaService {
     throw new InternalServerErrorException('Unexpected error, check server logs');
 
   }
+
+  
 }
