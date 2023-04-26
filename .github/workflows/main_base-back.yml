@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: nest.zip
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -55,4 +55,4 @@ jobs:
           app-name: 'base-back'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_101F461C2D254AFC8DCD48B2EFEEDA47 }}
-          package: rm nest.zip
+          package: .
