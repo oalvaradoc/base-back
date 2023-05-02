@@ -38,6 +38,10 @@ docker run -p80:3000 oalvaradoc/nest-back-prod:1.0.1
 
 docker run -p80:3000 --env-file=.env.prod oalvaradoc/nest-back-prod:1.0.1
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ec01de4723446c8c55633f92ff2779d63e7434d3
 
 # Docker Compose
 
@@ -79,7 +83,6 @@ Subir imagen
 docker push <usuario docker hub>/<nombre repositorio>
 
 ```
-
 ## Para Despliegues
 
 https://github.com/electerious/Ackee/blob/master/docs/Get%20started.md#2-configure-ackee-1
@@ -95,6 +98,7 @@ https://base-back.vercel.app
 
 https://vercel.com/oalvaradoc/base-back
 
+<<<<<<< HEAD
 https://base-back.azurewebsites.net
 
 --Ver Swager
@@ -103,6 +107,8 @@ https://base-back.azurewebsites.net/api
 --Ver logs
 https://base-back.scm.azurewebsites.net/api/logstream
 
+=======
+>>>>>>> ec01de4723446c8c55633f92ff2779d63e7434d3
 ## La base de datos esta publicada en 
 
 ## Comando para generar el dist de Publicacion
