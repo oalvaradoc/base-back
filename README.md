@@ -25,9 +25,18 @@ http://localhost:3000/api/seed
 
 docker build -t imageback .
 
+8.1 Subir actualizaciones a Docker Hub
+
+docker tag nest-back-prod oalvaradoc/nest-back-prod:1.0.1
+docker push oalvaradoc/nest-back-prod:1.0.1
+
 9. Probar la Dockerización
 
 docker run -p80:3000 nest-cloud-run
+
+docker run -p80:3000 oalvaradoc/nest-back-prod:1.0.1
+
+docker run -p80:3000 --env-file=.env.prod oalvaradoc/nest-back-prod:1.0.1
 
 
 # Docker Compose
@@ -83,3 +92,19 @@ nest g res usuarios --no-spec
 ## El sitio esta publicado en 
 
 https://base-back.vercel.app
+
+https://vercel.com/oalvaradoc/base-back
+
+https://base-back.azurewebsites.net
+
+--Ver Swager
+https://base-back.azurewebsites.net/api
+
+--Ver logs
+https://base-back.scm.azurewebsites.net/api/logstream
+
+## La base de datos esta publicada en 
+
+## Comando para generar el dist de Publicacion
+yarn build
+
