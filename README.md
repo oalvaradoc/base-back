@@ -38,8 +38,6 @@ docker run -p80:3000 oalvaradoc/nest-back-prod:1.0.1
 
 docker run -p80:3000 --env-file=.env.prod oalvaradoc/nest-back-prod:1.0.1
 
-
-
 # Docker Compose
 
 ## Build - Dev
@@ -94,6 +92,14 @@ nest g res usuarios --no-spec
 https://base-back.vercel.app
 
 https://vercel.com/oalvaradoc/base-back
+
+https://base-back.azurewebsites.net
+
+--Ver Swager
+https://base-back.azurewebsites.net/api
+
+--Ver logs
+https://base-back.scm.azurewebsites.net/api/logstream
 
 ## La base de datos esta publicada en 
 

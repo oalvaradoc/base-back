@@ -5,8 +5,8 @@ import { FilesService } from './files.service';
 import { FilesController } from './files.controller';
 import { UsuariosService } from '../usuarios/usuarios.service';
 import { Repository } from 'typeorm';
-import { User } from 'src/auth/entities/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from '../auth/entities/user.entity';
 
 @Module({
   controllers: [FilesController],

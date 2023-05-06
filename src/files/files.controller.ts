@@ -8,7 +8,7 @@ import { diskStorage } from 'multer';
 import { FilesService } from './files.service';
 
 import { fileFilter, fileNamer } from './helpers';
-import { UsuariosService } from 'src/usuarios/usuarios.service';
+import { UsuariosService } from '../usuarios/usuarios.service';
 
 @ApiTags('Files - Get and Upload')
 @Controller('files')

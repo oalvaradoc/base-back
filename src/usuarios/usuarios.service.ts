@@ -57,7 +57,9 @@ export class UsuariosService {
 
     const usuario: any[] = Object.values(usuarios);
 
-    usuarios.forEach(usuario => usuario.img = `${ this.configService.get('HOST_API') }/files/usuario/${ usuario.img }`);
+    //usuarios.forEach(usuario => usuario.img = `${ this.configService.get('HOST_API') }/files/usuario/${ usuario.img }`);
+    usuarios.forEach(usuario => usuario.img == null ? 'null' : usuario.img = `${ this.configService.get('HOST_API') }/files/usuario/${ usuario.img }`);
+    //usuarios.forEach(usuario => usuario.img == null ? null : `${ this.configService.get('HOST_API') }/files/usuario/${ usuario.img }`);
 
     return {total, usuario};
   }
@@ -70,7 +72,7 @@ export class UsuariosService {
     if ( !usuario ) 
       throw new NotFoundException(`usuario with ${ term } not found`);
 
-    usuario.img = `${ this.configService.get('HOST_API') }/files/usuario/${ usuario.img }`;
+    usuario.img = usuario.img == null ? '' : `${ this.configService.get('HOST_API') }/files/usuario/${ usuario.img }`;
 
     return usuario;
   }
@@ -94,7 +96,7 @@ export class UsuariosService {
       await queryRunner.commitTransaction();
       await queryRunner.release();
 
-      usuario.img = `${ this.configService.get('HOST_API') }/files/usuario/${ usuario.img }`;
+      usuario.img = usuario.img == null ? '' : `${ this.configService.get('HOST_API') }/files/usuario/${ usuario.img }`;
 
       return usuario;
       
