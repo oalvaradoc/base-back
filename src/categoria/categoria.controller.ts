@@ -28,7 +28,7 @@ export class CategoriaController {
     return this.categoriaService.findAll( paginationDto );
   }
 
-  @Get(':id')
+  @Get(':term')
   findOne(@Param('term') term: string) {
     return this.categoriaService.findOne(term);
   }

@@ -28,7 +28,7 @@ export class UsuariosController {
     return this.usuariosService.findAll(paginationDto);
   }
 
-  @Get(':id')
+  @Get(':term')
   findOne(@Param('term') term: string) {
     return this.usuariosService.findOne(term);
   }
