@@ -42,7 +42,7 @@ export class UsuariosController {
   }
 
   @Delete(':id')
-  @Auth( ValidRoles.admin )
+  //@Auth( ValidRoles.admin )
   remove(@Param('id') id: string) {
     return this.usuariosService.remove(id);
   }
