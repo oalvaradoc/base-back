@@ -34,7 +34,7 @@ export class CategoriaController {
   }
 
   @Patch(':id')
-  @Auth( ValidRoles.admin )
+  //@Auth( ValidRoles.admin )
   update(
     @Param('id', ParseUUIDPipe ) id: string, 
     @Body() categoriaDto: UpdateCategoriaDto,
@@ -44,7 +44,7 @@ export class CategoriaController {
   }
 
   @Delete(':id')
-  @Auth( ValidRoles.admin )
+  //@Auth( ValidRoles.admin )
   remove(@Param('id', ParseUUIDPipe ) id: string) {
     return this.categoriaService.remove( id );
   }

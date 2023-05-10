@@ -40,7 +40,7 @@ export class ProductsController {
   }
 
   @Patch(':id')
-  @Auth( ValidRoles.admin )
+  //@Auth( ValidRoles.admin )
   update(
     @Param('id', ParseUUIDPipe ) id: string, 
     @Body() updateProductDto: UpdateProductDto,
@@ -50,7 +50,7 @@ export class ProductsController {
   }
 
   @Delete(':id')
-  @Auth( ValidRoles.admin )
+  //@Auth( ValidRoles.admin )
   remove(@Param('id', ParseUUIDPipe ) id: string) {
     return this.productsService.remove( id );
   }
