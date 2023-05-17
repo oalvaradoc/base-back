@@ -26,7 +26,7 @@ export class Categoria {
 
     @ManyToOne(
         () => User,
-        ( user ) => user.product,
+        ( user ) => user.categoria,
         { eager: true }
     )
     user: User

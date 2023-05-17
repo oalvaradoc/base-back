@@ -1,5 +1,7 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Product } from '../../products/entities';
+import { Categoria } from 'src/categoria/entities/categoria.entity';
+//import { Categoria } from '../../categoria/entities';
 
 
 @Entity('users')
@@ -46,6 +48,12 @@ export class User {
         ( product ) => product.user
     )
     product: Product;
+
+    @OneToMany(
+        () => Categoria,
+        ( categoria ) => categoria.user
+    )
+    categoria: Categoria;
 
 
     @BeforeInsert()
