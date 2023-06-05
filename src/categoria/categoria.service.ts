@@ -67,16 +67,16 @@ export class CategoriaService {
     
     let categoria: Categoria;
 
-    if ( isUUID(term) ) {
+    //if ( isUUID(term) ) {
       categoria = await this.categoriaRepository.findOneBy({ id: term });
-    } else {
-      const queryBuilder = this.categoriaRepository.createQueryBuilder('prod'); 
-      categoria = await queryBuilder
-        .where('UPPER(nombre) =:nombre', {
-          nombre: term.toUpperCase()
-        })
-        .getOne();
-    }
+    // } else {
+    //   const queryBuilder = this.categoriaRepository.createQueryBuilder('prod'); 
+    //   categoria = await queryBuilder
+    //     .where('UPPER(nombre) =:nombre', {
+    //       nombre: term.toUpperCase()
+    //     })
+    //     .getOne();
+    // }
 
 
     if ( !categoria ) 
