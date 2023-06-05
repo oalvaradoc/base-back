@@ -24,6 +24,11 @@ export class Categoria {
     })
     nombre: string;
 
+    @Column('bit', {
+        default: 1
+    })
+    estado: boolean;
+
     @ManyToOne(
         () => User,
         ( user ) => user.categoria,
