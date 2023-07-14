@@ -11,6 +11,7 @@ import { FilesModule } from './files/files.module';
 import { AuthModule } from './auth/auth.module';
 import { CategoriaModule } from './categoria/categoria.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
+import { TipoModule } from './tipo/tipo.module';
 
 @Module({
   imports: [
@@ -56,6 +57,8 @@ import { UsuariosModule } from './usuarios/usuarios.module';
     CategoriaModule,
 
     UsuariosModule,
+
+    TipoModule,
 
   ],
   controllers: [],
